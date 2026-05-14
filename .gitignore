@@ -38,3 +38,4 @@ Thumbs.db
 
 # Claude Code (local config only)
 .claude/
+.mcp.json

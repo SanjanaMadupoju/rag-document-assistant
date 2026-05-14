@@ -16,6 +16,24 @@ The entire application is a single file: `app.py`.
 | `.gitignore` | Excludes `venv/`, `__pycache__/`, `.env`, logs, `.claude/` |
 | `.claude/settings.json` | Claude Code hooks: PostToolUse syntax check and activity log |
 
+**GitHub repository:** `https://github.com/SanjanaMadupoju/rag-document-assistant`
+
+---
+
+## Available MCP Connections
+
+### GitHub MCP
+- **Status:** Connected
+- **Config:** `~/.claude.json` → `mcpServers.github` (runs via `node`, global to all projects)
+- **Account:** `SanjanaMadupoju`
+- **Can access:**
+  - Repositories — search, create, read file contents
+  - Issues — list, create, update, comment
+  - Pull requests — list, create, review, merge, check status
+  - Commits — list commits on any branch
+  - Code search — search across GitHub
+  - Users — search GitHub users
+
 ---
 
 ## Tech Stack
@@ -124,4 +142,4 @@ These are documented deficiencies — do not work around them silently. If fixin
 
 9. **Temp file leak on error.** If an exception is raised before `os.unlink(pdf_path)` at the bottom of `app.py`, the temp file is not cleaned up. Fix: wrap the `if uploaded_file:` block in `try/finally`.
 
-10. **Model names hardcoded in error messages.** The `OllamaResponseError` catch blocks in both the embedding and inference sections hardcode `nomic-embed-text` and `llama3.2:1b` in error strings instead of using `EMBEDDING_MODEL` and `LLM_MODEL` constants. Fix: use f-strings with the constants, e.g. `f"Run: \`ollama pull {EMBEDDING_MODEL}\`"`.
+10. **Model names hardcoded in error messages.** The `OllamaResponseError` catch blocks in both the embedding and inference sections hardcode `nomic-embed-text` and `llama3.2:1b` in error strings instead of using `EMBEDDING_MODEL` and `LLM_MODEL` constants. Fix: use f-strings with the constants, e.g. `f"Run: \`ollama pull {EMBEDDING_MODEL}\``.
